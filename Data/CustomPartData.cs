@@ -21,6 +21,6 @@ namespace SimplePartsLoader.Data
     public class PrefabData
     {
         public string modelPath;
-        public string colliderFit; // "Box", "Mesh", "Convex"
+        public string colliderFit;
     }
 }

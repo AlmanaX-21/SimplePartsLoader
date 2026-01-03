@@ -1,20 +1,4 @@
-/* * * * *
- * A simple JSON Parser / builder
- * ------------------------------
- * 
- * It mainly has been written as a simple JSON parser. It can build a JSON string
- * from the node-tree, or generate a node tree from a JSON string.
- * 
- * If you want to use compression when saving to file / stream / B64 you have to include
- * SharpZipLib ( http://www.icsharpcode.net/opensource/sharpziplib/ ) in your project and
- * open "SimpleJSON.cs" and uncomment the #define USE_SharpZipLib at the top of the file.
- * 
- * Written by Bunzilla.
- * 2012-05-31
- * 
- * Licensed under The MIT License (MIT)
- * 
- */
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -372,7 +356,7 @@ namespace SimplePartsLoader.SimpleJSON
             return ctx;
         }
 
-    } // End of JSONNode
+    }
 
     public class JSONArray : JSONNode, IEnumerable
     {
@@ -639,7 +623,7 @@ namespace SimplePartsLoader.SimpleJSON
         public override string ToJSON(int prefix) { return ""; }
     }
 
-    // Null implementation ...
+
     public class JSONNull : JSONNode
     {
         public override string ToJSON(int prefix) { return "null"; }

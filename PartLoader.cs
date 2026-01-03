@@ -29,7 +29,7 @@ namespace SimplePartsLoader
 
             foreach (string file in files)
             {
-                // Fix: Ignore legacy Standard folder to prevent recursive loading crashes
+
                 if (file.Contains(Path.DirectorySeparatorChar + "Standard" + Path.DirectorySeparatorChar))
                     continue;
 
@@ -41,14 +41,14 @@ namespace SimplePartsLoader
 
                     CustomPartData part = new CustomPartData();
                     part.id = node["id"];
-                    // ... (rest of parsing logic is unchanged, just showing context)
+
                     part.basePrefabName = node["basePrefabName"];
                     part.name = node["name"];
                     part.description = node["description"];
                     part.price = node["price"].AsFloat;
                     part.category = node["category"];
 
-                    // Components overrides
+
                     part.overrides = new Dictionary<string, Dictionary<string, object>>();
                     if (node["overrides"] != null && node["overrides"].IsObject)
                     {
@@ -122,7 +122,7 @@ namespace SimplePartsLoader
         {
             try
             {
-                // Determine Dump Directory - moved to PartDumps folder to prevent recursive loading
+
                 string dumpDir = SimplePartsLoaderPlugin.PartDumpsPath;
                 if (!Directory.Exists(dumpDir)) Directory.CreateDirectory(dumpDir);
 
@@ -132,13 +132,13 @@ namespace SimplePartsLoader
 
                     try
                     {
-                        // Sanitize filename
+
                         string safeName = string.Join("_", part.name.Split(Path.GetInvalidFileNameChars()));
                         string filePath = Path.Combine(dumpDir, safeName + ".json");
 
                         if (File.Exists(filePath))
                         {
-                            // LOAD EXISTING overrides
+
                             try
                             {
                                 PluginLogger?.LogInfo($"Loading overrides for standard part: {part.name}");
@@ -213,7 +213,7 @@ namespace SimplePartsLoader
 
                         var newOverrides = new JSONClass();
 
-                        // PlanePart Dump
+
                         var pp = part.GetComponent<PlanePart>();
                         if (pp)
                         {
@@ -231,7 +231,7 @@ namespace SimplePartsLoader
                             newOverrides.Add(pp.GetType().Name, compNode);
                         }
 
-                        // Also dump BuildingPart specifics to allow mass/drag editing if they exist there (BuildingPart usually doesn't have physics, but just in case)
+
                         if (bp)
                         {
                             var compNode = new JSONClass();

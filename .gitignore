@@ -1,4 +1,4 @@
-*/.ps1
+*/*.ps1
 */.bat
 */.sh
 */.cmd
@@ -7,4 +7,3 @@
 /obj/*
 /Parts/*
 /PartDumps/*
-    

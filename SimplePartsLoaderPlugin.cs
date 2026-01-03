@@ -17,7 +17,7 @@ namespace SimplePartsLoader
             Instance = this;
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
 
-            // Setup Config Path
+
             PartsConfigPath = Path.Combine(Paths.ConfigPath, "SimplePartsLoader", "Parts");
             PartDumpsPath = Path.Combine(Paths.ConfigPath, "SimplePartsLoader", "PartDumps");
 
@@ -27,10 +27,10 @@ namespace SimplePartsLoader
             if (!Directory.Exists(PartDumpsPath))
                 Directory.CreateDirectory(PartDumpsPath);
 
-            // Init Manager
+
             PartLoader.Initialize(Logger);
 
-            // Apply Patches
+
             Harmony.CreateAndPatchAll(typeof(Patches.PartRegistryPatch));
         }
     }
