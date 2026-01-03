@@ -1,0 +1,10 @@
+*/.ps1
+*/.bat
+*/.sh
+*/.cmd
+/managed/*
+/bin/*
+/obj/*
+/Parts/*
+/PartDumps/*
+    
